@@ -1,3 +1,5 @@
+import {useDispatch as _useDispatch} from 'react-redux'
+
 export enum ACTIONS_TYPE {
     CHANGE_CURRENCY_FIELD_TYPE = 'CurrencyExchange/CHANGE_CURRENCY_FIELD_TYPE',
     CHANGE_CHANGE_ACTION = 'CurrencyExchange/CHANGE_CHANGE_ACTION',
@@ -51,3 +53,8 @@ export const СhangeCurrentCurrencyAC = (currentCurrency: string): ChangeCurrent
 };
 
 export type CurrencyReducersTypes = ChangeCurrencyFieldType | ChangeActionType | ChangeCurrentCurrencyType;
+
+export function useDispatch(){
+    const dispatch = _useDispatch();
+    return (ac:CurrencyReducersTypes) => dispatch(ac)
+}
