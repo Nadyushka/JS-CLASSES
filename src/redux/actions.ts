@@ -24,13 +24,13 @@ export const ChangeCurrencyFieldAC = (amountOfBYN: string, amountOfCurrency: str
     }
 };
 
-export type ChangeAction = {
+export type ChangeActionType = {
     type:ACTIONS_TYPE.CHANGE_CHANGE_ACTION
     isBuying:boolean
 };
 
 // @ts-ignore
-export const ChangeActionAC = (isBuying: boolean): ChangeAction => {
+export const ChangeActionAC = (isBuying: boolean): ChangeActionType => {
     return {
         type: ACTIONS_TYPE.CHANGE_CHANGE_ACTION,
         isBuying:isBuying
@@ -50,4 +50,4 @@ export const СhangeCurrentCurrencyAC = (currentCurrency: string): ChangeCurrent
     }
 };
 
-export type CurrencyReducersTypes = ChangeCurrencyFieldType | ChangeAction | ChangeCurrentCurrencyType;
+export type CurrencyReducersTypes = ChangeCurrencyFieldType | ChangeActionType | ChangeCurrentCurrencyType;
