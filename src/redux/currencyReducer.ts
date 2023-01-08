@@ -44,9 +44,7 @@ export const currencyReducer = (state: CurrencyState = initialState, action: Cur
         case ACTIONS_TYPE.CHANGE_CURRENCY_FIELD_TYPE: {
             return {
                 ...state,
-                amountOfCurrency: action.payload.amountOfCurrency,
-                amountOfBYN: action.payload.amountOfBYN,
-
+               ...action.payload,
             }
         }
         case ACTIONS_TYPE.CHANGE_CURRENT_CURRENCY: {
