@@ -60,9 +60,9 @@ const counter2 = makeCounter();
 // set: установить счетчик в заданное значение;
 //
 
-const makeCounter1 = (value:number) => {
+const makeCounter1 = (value: number) => {
 
-    let currValue:number = value;
+    let currValue: number = value;
 
     return {
         increase() {
@@ -91,6 +91,34 @@ let counter1 = makeCounter1(6)
 // 4) superSum(3)(2,5,3) //10
 // 5) superSum(3)(2,5)(3) //10
 // 6) superSum(3)(2,5)(3,9) //10
+
+const superSum = (times: number) => {
+
+    let count = times;
+    let sum = 0;
+
+    if (times === 0) {
+        return 0
+    }
+
+    let superSums = (...arg: any) => {
+
+        for (let i = 0; i < arg.length; i++) {
+            if (count === 0) {break}
+            count = count - 1;
+            sum = sum + arg[i]
+        }
+
+        if (count === 0) {
+            return sum
+        } else {
+            return superSums
+        }
+    }
+
+    return superSums
+
+}
 
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
 
