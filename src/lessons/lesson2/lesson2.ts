@@ -59,28 +59,28 @@ const counter2 = makeCounter();
 // reset: установить счетчик в 0;
 // set: установить счетчик в заданное значение;
 //
-//
-// const makeCounter1 = (value:number) => {
-//
-//     let currValue:number = value;
-//
-//     return {
-//         increase() {
-//             return currValue++;
-//         },
-//         decrease() {
-//             return currValue--;
-//         },
-//         reset() {
-//             return currValue = 0;
-//         },
-//         set() {
-//             return currValue = value;
-//         },
-//     }
-// }
-//
-// let counter1 = makeCounter1(6)
+
+const makeCounter1 = (value:number) => {
+
+    let currValue:number = value;
+
+    return {
+        increase() {
+            return currValue++;
+        },
+        decrease() {
+            return currValue--;
+        },
+        reset() {
+            return currValue = 0;
+        },
+        set() {
+            return currValue = value;
+        },
+    }
+}
+
+let counter1 = makeCounter1(6)
 
 // Task 04*
 // Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
