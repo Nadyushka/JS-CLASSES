@@ -125,6 +125,27 @@ const superSum = (times: number) => {
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
 
+const sumTo = (value:number):number => {
+    let currValue = value;
+
+    if (currValue === 0) {
+        return currValue
+    } else {
+        return currValue + sumTo(value-1)
+    }
+
+}
+
+const list = (obj:any) => {
+    
+
+    if (obj.next === null) {
+        return obj.value
+    } else {
+        return obj.value + ',' + list(obj.next)
+    }
+}
+
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
