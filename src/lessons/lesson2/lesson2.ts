@@ -24,6 +24,14 @@ console.log('lesson 2');
 // Task 01
 // Реализовать функцию sum которая суммирует 2 числа следующим образом sum(3)(6) === 9
 
+const sum = (a: number) => {
+    return (b: number) => {
+        return a + b;
+    }
+}
+
+console.log(sum(3)(6))
+
 // Task 02
 // Реализовать функцию makeCounter которая работает следующим образом:
 // const counter = makeCounter();
@@ -33,6 +41,16 @@ console.log('lesson 2');
 // counter2(); // 1
 // counter(); // 3
 
+const makeCounter = () => {
+    let count = 0;
+    return () => {
+        return ++count;
+    }
+}
+
+const counter = makeCounter()
+const counter2 = makeCounter();
+
 // Task 03
 // Переписать функцию из Task 02 так, что бы она принимала число в качестве аргумента и это число было стартовым значением счетчика
 // и возвращала следующий объект методов:
@@ -40,6 +58,29 @@ console.log('lesson 2');
 // decrease: -1
 // reset: установить счетчик в 0;
 // set: установить счетчик в заданное значение;
+
+
+const makeCounter1 = (value:number) => {
+
+    let currValue:number = value;
+
+    return {
+        increase() {
+            return currValue++;
+        },
+        decrease() {
+            return currValue--;
+        },
+        reset() {
+            return currValue = 0;
+        },
+        set() {
+            return currValue = value;
+        },
+    }
+}
+
+let counter1 = makeCounter1(6)
 
 // Task 04*
 // Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
@@ -60,4 +101,5 @@ console.log('lesson 2');
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
 // just a plug
-export default () => {};
+export default () => {
+};
