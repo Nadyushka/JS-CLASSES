@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import API from './API';
 import './lesson_3';
 
@@ -9,7 +9,8 @@ const Lesson3 = () => {
     const [serachResultByType, setSerachResultByType] = useState('');
 
     const searchFilm = () => {
-        API.searchFilmsByTitle(searchName)
+         API.searchFilmsByTitle(searchName);
+
     };
 
     const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,7 +32,8 @@ const Lesson3 = () => {
 
             <div>
                 <h3><p>Search by type:</p></h3>
-                <input type="text" value={searchNameByType} onChange={(e) => setSearchNameByType(e.currentTarget.value)}/>
+                <input type="text" value={searchNameByType}
+                       onChange={(e) => setSearchNameByType(e.currentTarget.value)}/>
                 <button onClick={searchByType} data-t='movie'>Movie</button>
                 <button onClick={searchByType} data-t='series'>Series</button>
                 <div>
