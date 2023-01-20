@@ -136,8 +136,7 @@ const sumTo = (value:number):number => {
 
 }
 
-const list = (obj:any) => {
-    
+const list = (obj:any):any => {
 
     if (obj.next === null) {
         return obj.value
