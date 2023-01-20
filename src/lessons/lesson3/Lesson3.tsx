@@ -10,9 +10,11 @@ const Lesson3 = () => {
 
     const searchFilm = () => {
 
+
         API.searchFilmsByTitle(searchName)
             .then(res => setSerachResult(res ? res : ''))
         setSearchName('')
+
 
 
     };
