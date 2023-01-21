@@ -78,13 +78,47 @@ console.log(promise4)
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
 
-let handlePromise = {
-
+let handlePromise: any = {
     promise: null,
     resolve: null,
     reject: null,
-    onSuccess: (paramName: string) => console.log(`Promise is resolved with data: ${paramName}`),
-    onError: (paramName: string) => console.log(`Promise is rejected with error: ${paramName}`),
+    onSuccess: (paramName: any) => console.log(`Promise is resolved with data: ${paramName}`),
+    onError: (paramName: any) => console.log(`Promise is rejected with error: ${paramName}`),
+}
+
+export const onClickHandlerCreate = () => {
+    handlePromise.promise = new Promise((res, rej) => {
+            handlePromise.resolve = res
+            handlePromise.reject = rej
+        }
+    )
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+}
+
+// export const onClickHandlerCreate = () => {
+//     return new Promise((res) => {
+//         res('Create promise')
+//     }).then(res => {
+//         handlePromise.promise = 'Create promise';
+//         console.log(res)
+//         return 'Resolve promise'
+//     }).then(res => {
+//         handlePromise.resolve = 'Resolve promise'
+//         console.log(res)
+//         return 'Reject promise'
+//     }).then(res => {
+//         handlePromise.reject = 'Reject promise'
+//         console.log(res)
+//     }).finally(() => console.log(handlePromise))
+// }
+
+export const onClickHandlerResolve = () => {
+    console.log(handlePromise.resolve('Resolve promise'))
+}
+
+export const onClickHandlerReject = () => {
+    console.log(handlePromise.reject('Reject promise'))
 }
 
 // Task 06
