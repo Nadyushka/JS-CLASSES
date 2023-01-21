@@ -8,17 +8,43 @@ console.log('lesson 4');
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
 
+let promise1 = new Promise((res, rej) => {
+    console.log("Promise is created")
+})
+
+console.log(promise1)
 
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+let promise2 = new Promise((res) => {
+    res('Promise Data')
+})
+    .then(res => {
+        console.log(res)
+        return res
+    })
+
+console.log(promise2)
 
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
+
+let promise3 = new Promise((res, rej) => {
+    rej('Promise Error')
+})
+    .catch(error => {
+            console.log(error)
+            return error
+        }
+    )
+
+
+console.log(promise3)
 
 
 // Task 04
@@ -27,6 +53,17 @@ console.log('lesson 4');
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+let promise4 = new Promise((res) => {
+        res(
+            setTimeout(() => {
+                    console.log('Promise Data')
+                }, 5000
+            )
+        )
+    }
+)
+
+console.log(promise4)
 
 // Task 05
 // Создайте литерал объекта handlePromise со следующими свойствами:
@@ -41,6 +78,14 @@ console.log('lesson 4');
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
 
+let handlePromise = {
+
+    promise: null,
+    resolve: null,
+    reject: null,
+    onSuccess: (paramName: string) => console.log(`Promise is resolved with data: ${paramName}`),
+    onError: (paramName: string) => console.log(`Promise is rejected with error: ${paramName}`),
+}
 
 // Task 06
 // Создайте промис, который через 1 с возвращает строку "My name is".
@@ -57,6 +102,6 @@ console.log('lesson 4');
 // и выведите в консоль {name, age, city}
 
 
-
 // just a plug
-export default ()=>{};
+export default () => {
+};
