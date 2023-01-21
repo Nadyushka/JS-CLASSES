@@ -8,17 +8,40 @@ console.log('lesson 4');
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
 
+let promise1 = new Promise((res, rej) => {
+    console.log("Promise is created")
+})
+
+console.log(promise1)
 
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+let promise2 = new Promise((res) => {
+    res('Promise Data')
+})
+    .then(res => {
+        console.log(res)
+    })
+
+console.log(promise2)
 
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
+
+let promise3 = new Promise((res, rej) => {
+    rej('Promise Error')
+})
+    .catch(error => {
+            console.log(error)
+        }
+    )
+
+console.log(promise3)
 
 
 // Task 04
@@ -27,6 +50,15 @@ console.log('lesson 4');
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+let promise4 = new Promise((res) => {
+        setTimeout(() => {
+                res(console.log('Promise Data'))
+            }, 5000
+        )
+    }
+)
+
+console.log(promise4)
 
 // Task 05
 // Создайте литерал объекта handlePromise со следующими свойствами:
@@ -41,6 +73,50 @@ console.log('lesson 4');
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
 
+let handlePromise: any = {
+    promise: null,
+    resolve: null,
+    reject: null,
+    onSuccess: (paramName: any) => console.log(`Promise is resolved with data: ${paramName}`),
+    onError: (paramName: any) => console.log(`Promise is rejected with error: ${paramName}`),
+}
+
+export const onClickHandlerCreate = () => {
+    handlePromise.promise = new Promise((res, rej) => {
+            handlePromise.resolve = res
+            handlePromise.reject = rej
+        }
+    )
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+
+    console.log(handlePromise.promise)
+}
+
+// export const onClickHandlerCreate = () => {
+//     return new Promise((res) => {
+//         res('Create promise')
+//     }).then(res => {
+//         handlePromise.promise = 'Create promise';
+//         console.log(res)
+//         return 'Resolve promise'
+//     }).then(res => {
+//         handlePromise.resolve = 'Resolve promise'
+//         console.log(res)
+//         return 'Reject promise'
+//     }).then(res => {
+//         handlePromise.reject = 'Reject promise'
+//         console.log(res)
+//     }).finally(() => console.log(handlePromise))
+// }
+
+export const onClickHandlerResolve = () => {
+    console.log(handlePromise.resolve('Resolve promise'))
+}
+
+export const onClickHandlerReject = () => {
+    console.log(handlePromise.reject('Reject promise'))
+}
 
 // Task 06
 // Создайте промис, который через 1 с возвращает строку "My name is".
@@ -49,6 +125,18 @@ console.log('lesson 4');
 // Создайте функцию print, которая выводит в консоль значение своего параметра
 // Добавьте два метода then и передайте созданные функции.
 
+const onSuccess = (value: string) => value + 'Nadya'
+const print = (value: string): string => value
+
+let promise6 = new Promise((res) => {
+    setTimeout(() => res('My name is '), 1000)
+})
+    .then(res => onSuccess(res as string))
+    .then(res => print(res))
+    .then(res => console.log(res))
+
+
+console.log(promise6)
 
 // Task 7
 // Создайте три промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
@@ -56,7 +144,28 @@ console.log('lesson 4');
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
 
+let promise7_1 = new Promise((res, rej) => {
+    setTimeout(() => res({name: "Anna"}), 2000)
+})
+    .then(res => res as { name: string })
+    .then(res => console.log(res.name))
+
+
+let promise7_2 = new Promise((res, rej) => {
+    setTimeout(() => res({age: 16}), 3000)
+})
+    .then(res => res as { age: number })
+    .then(res => console.log(res.age))
+
+let promise7_3 = new Promise((res,rej) => {
+    setTimeout(() => res({city: 'Minsk'}), 4000)
+})
+    .then(res => res as { city: string })
+    .then(res => console.log(res.city))
+
+console.log(promise7_1, promise7_2, promise7_3)
 
 
 // just a plug
-export default ()=>{};
+export default () => {
+};
