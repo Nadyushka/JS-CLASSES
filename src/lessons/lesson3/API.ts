@@ -45,7 +45,7 @@ const API = {
             if (res.Title === title && res.Type === type) {
                 return res.Title
             } else {
-              return  'No such movie'
+              return  'No such movie in ' + type
             }
 
         })
