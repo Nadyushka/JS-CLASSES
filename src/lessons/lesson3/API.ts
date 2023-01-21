@@ -30,6 +30,7 @@ const API = {
     },
 
     searchFilmsByType: (title: string, type: string) => {
+
         return new Promise((res, rej) => {
             if (!type) {
                 rej(console.log('Type is required'))
@@ -51,6 +52,7 @@ const API = {
             .catch(err => console.log('Error:' + err))
 
     }
+
 
 }
 
