@@ -144,6 +144,27 @@ console.log(promise6)
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
 
+let promise7_1 = new Promise((res, rej) => {
+    setTimeout(() => res({name: "Anna"}), 2000)
+})
+    .then(res => res as { name: string })
+    .then(res => console.log(res.name))
+
+
+let promise7_2 = new Promise((res, rej) => {
+    setTimeout(() => res({age: 16}), 3000)
+})
+    .then(res => res as { age: number })
+    .then(res => console.log(res.age))
+
+let promise7_3 = new Promise((res,rej) => {
+    setTimeout(() => res({city: 'Minsk'}), 4000)
+})
+    .then(res => res as { city: string })
+    .then(res => console.log(res.city))
+
+console.log(promise7_1, promise7_2, promise7_3)
+
 
 // just a plug
 export default () => {
