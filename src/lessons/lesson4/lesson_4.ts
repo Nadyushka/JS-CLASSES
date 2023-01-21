@@ -24,7 +24,6 @@ let promise2 = new Promise((res) => {
 })
     .then(res => {
         console.log(res)
-        return res
     })
 
 console.log(promise2)
@@ -39,10 +38,8 @@ let promise3 = new Promise((res, rej) => {
 })
     .catch(error => {
             console.log(error)
-            return error
         }
     )
-
 
 console.log(promise3)
 
@@ -54,11 +51,9 @@ console.log(promise3)
 // Получите данные промиса и выведите их в консоль
 
 let promise4 = new Promise((res) => {
-        res(
-            setTimeout(() => {
-                    console.log('Promise Data')
-                }, 5000
-            )
+        setTimeout(() => {
+                res(console.log('Promise Data'))
+            }, 5000
         )
     }
 )
@@ -94,7 +89,7 @@ export const onClickHandlerCreate = () => {
     )
         .then(res => console.log(res))
         .catch(err => console.log(err))
-    
+
     console.log(handlePromise.promise)
 }
 
@@ -130,6 +125,18 @@ export const onClickHandlerReject = () => {
 // Создайте функцию print, которая выводит в консоль значение своего параметра
 // Добавьте два метода then и передайте созданные функции.
 
+const onSuccess = (value: string) => value + 'Nadya'
+const print = (value: string): string => value
+
+let promise6 = new Promise((res) => {
+    setTimeout(() => res('My name is '), 1000)
+})
+    .then(res => onSuccess(res as string))
+    .then(res => print(res))
+    .then(res => console.log(res))
+
+
+console.log(promise6)
 
 // Task 7
 // Создайте три промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
