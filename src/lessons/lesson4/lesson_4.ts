@@ -94,6 +94,8 @@ export const onClickHandlerCreate = () => {
     )
         .then(res => console.log(res))
         .catch(err => console.log(err))
+    
+    console.log(handlePromise.promise)
 }
 
 // export const onClickHandlerCreate = () => {
